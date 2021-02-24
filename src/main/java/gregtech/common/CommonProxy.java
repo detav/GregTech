@@ -4,6 +4,7 @@ import gregtech.api.GTValues;
 import gregtech.api.block.machines.MachineItemBlock;
 import gregtech.api.enchants.EnchantmentEnderDamage;
 import gregtech.api.items.metaitem.MetaItem;
+import gregtech.api.recipes.recipeproperties.TemperatureProperty;
 import gregtech.api.unification.material.type.DustMaterial;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.ore.OrePrefix;
@@ -12,7 +13,6 @@ import gregtech.common.blocks.*;
 import gregtech.common.blocks.wood.BlockGregLeaves;
 import gregtech.common.blocks.wood.BlockGregLog;
 import gregtech.common.blocks.wood.BlockGregSapling;
-import gregtech.common.crafting.TemperatureProperty;
 import gregtech.common.items.MetaItems;
 import gregtech.common.items.potions.PotionFluids;
 import gregtech.common.pipelike.cable.ItemBlockCable;
@@ -140,7 +140,10 @@ public class CommonProxy {
     //ore dictionary and recipes will get recipes accessible in time
     @SubscribeEvent
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-        TemperatureProperty.register();
+        // registers coiltypes for the TemperatureProperty used in Blast Furnace Recipes
+        for (BlockWireCoil.CoilType values : BlockWireCoil.CoilType.values()) {
+            TemperatureProperty.registerCoilType(values.getCoilTemperature(), values.getMaterial(), values.getName());
+        }
 
         GTLog.logger.info("Registering ore dictionary...");
 
