@@ -4,7 +4,7 @@ import gregtech.api.GTValues;
 import gregtech.api.block.machines.MachineItemBlock;
 import gregtech.api.enchants.EnchantmentEnderDamage;
 import gregtech.api.items.metaitem.MetaItem;
-import gregtech.api.recipes.recipeproperties.TemperatureProperty;
+import gregtech.api.recipes.crafttweaker.MetaItemBracketHandler;
 import gregtech.api.unification.material.type.DustMaterial;
 import gregtech.api.unification.material.type.Material;
 import gregtech.api.unification.ore.OrePrefix;
@@ -82,16 +82,15 @@ public class CommonProxy {
         SURFACE_ROCKS.values().stream().distinct().forEach(registry::register);
         FRAMES.values().stream().distinct().forEach(registry::register);
         ORES.forEach(registry::register);
-        FLUID_BLOCKS.forEach(registry::register);
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void registerBlocksLast(RegistryEvent.Register<Block> event) {
         //last chance for mods to register their potion types is here
         PotionFluids.initPotionFluids();
+        FLUID_BLOCKS.forEach(event.getRegistry()::register);
     }
 
-    @SuppressWarnings("unchecked")
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
         GTLog.logger.info("Registering Items...");
@@ -140,11 +139,6 @@ public class CommonProxy {
     //ore dictionary and recipes will get recipes accessible in time
     @SubscribeEvent
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-        // registers coiltypes for the TemperatureProperty used in Blast Furnace Recipes
-        for (BlockWireCoil.CoilType values : BlockWireCoil.CoilType.values()) {
-            TemperatureProperty.registerCoilType(values.getCoilTemperature(), values.getMaterial(), values.getName());
-        }
-
         GTLog.logger.info("Registering ore dictionary...");
 
         MetaItems.registerOreDict();
@@ -179,6 +173,10 @@ public class CommonProxy {
         DecompositionRecipeHandler.runRecipeGeneration();
         RecyclingRecipes.init();
         WoodMachineRecipes.init();
+        
+        if (GTValues.isModLoaded(GTValues.MODID_CT)){
+            MetaItemBracketHandler.rebuildComponentRegistry();
+        }
     }
 
     @SubscribeEvent
@@ -241,6 +239,7 @@ public class CommonProxy {
     }
 
     public void onPostLoad() {
+        WoodMachineRecipes.postInit();
     }
 
 

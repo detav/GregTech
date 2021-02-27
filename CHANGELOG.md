@@ -1,5 +1,83 @@
 ## Changelog
 
+### 1.12.0
+* Highlight: TOP now displays fuel information (#1484) - Adrian Brock
+  * Blocks consuming fuel now has new information provided in TOP
+  * Specifically what fuel is used and how long will last
+* Highlight: Ore vein generation page in JEI (#1386) - ALongStringOfNumbers
+  * Pressing U on GTCE Ore will show in which veins it can be found
+  * Additional information like dimensions, spawn range and vein weight are available
+  * Vein files now can contain name and description optional values
+* Added descriptors to the machine controller (#1459) - ALongStringOfNumbers
+* Added unlocalized name of supported items is copied to clipboard when using /gt util hand (#1465) - Adrian Brock
+* Added support for multiblocks having own front side overlay (#1494) - dan
+* Added circuit method for adding circuits to CT recipes (#1496) - ALongStringOfNumbers
+* Updated JEI Multiblocks to show block counts and allow bookmarking (#1452) - Adrian Brock
+* Updated surface rocks to allow walking over them (#1462) - Adrian Brock
+* Updated sort to sort items by amount in descending order (#1477) - Nikolay Korolev
+* Updated particle texture to use material color (#1481) - Nikolay Korolev
+* Updated bounding box for Chest and Safe (#1482) - Nikolay Korolev
+* Removed generation of orebyproduct recipes when there are no byproducts (#1463) - Adrian Brock
+* Removed duplicate Dense Plate recipe (#1495) - dan
+* Fixed JEI multiblock rendering issue for Cracking Unit (#1464) - Adrian Brock
+* Fixed setting held item for non player listeners (#1466) - Adrian Brock
+* Fixed findPlayersUsing usage of AxisAlignedBB (#1470) - Nikolay Korolev
+* Fixed chest placement render problem (#1475) - Nikolay Korolev
+* Fixed some Russian translation (#1478) - Nikolay Korolev
+* Fixed empty containers working as full ones in Crafting Station (#1479) - Adrian Brock
+* Refactored MetaTileEntityChest (#1471) - Nikolay Korolev
+
+### 1.11.3 (Hotfix)
+* Removed mechanism to distribute expensive ticks more evenly as it broke JEI multiblock preview - LAGIdiot
+
+### 1.11.2
+* Added mechanism to distribute expensive ticks more evenly (#1424) - dan
+* Fixed Turbine rotor retaining/resetting speed incorrectly (#1422) - dan
+* Fixed CokeOven/PBF controller coloring support (#1432) - dan
+* Fixed NPE when placing covers (#1435) - dan
+* Fixed two tanks being shown in TOP for import hatch (#1447) - dan
+
+### 1.11.1 (Hotfix)
+* Fixed crash when CraftTweaker is not present - LAGIdiot
+
+### 1.11.0
+* Highlight: Chemistry update (#1414) - dan
+  * Unifies conventions of how much of a material is considered 1 mol
+  * Corrects non-stoichiometric reactions, removing the possibility of positive crafting loops
+  * High number of recipes got added/changed/removed
+  * Full info: https://github.com/GregTechCE/GregTech/pull/1414
+* Added better TOP Transformer info (#1404) - dan
+* Added Cable separation recipes (#1405) - dan
+* Added Wire & Cable 4x recipes (#1405) - dan
+* Added Rotor Mold (#1408) - dan
+  * Old Assembler recipe was removed
+* Added "Regular" to dust oredict entries (#1416) - dan
+* Added ability to take Fluids out of Input Hatch (#1427) - dan
+* Updated CT bracket handler to allows getting MetaItems (#1352) - idcppl
+* Updated InputIngredient to implement IIngredient (#1387) - Eutro
+* Removed Tehnut's maven as it is not needed (#1400) - LAGIdiot
+* Removed Duplicate Seed Oil recipes from Fluid Extractor (#1413) - thecodingchicken
+* Removed duplicated extruder recipes for metal rods (#1419) - LAGIdiot
+* Fixed ItemHandlerList::extractItem using slot instead of amount (#1394) - solidDoWant
+* Fixed Tooltip Bounding Box (#1415) - dan
+* Fixed oregen skipping high altitude ores in rare cases (#1418) - ALongStringOfNumbers
+* Fixed Surface Rocks being place underwater (#1420) - Ametsuchi
+* Fixed placed potions missing texture (#1421) - Ametsuchi
+* Fixed crash on registering Fluid with GENERATE_FLUID_BLOCK & GENERATE_PLASMA flags (#1428) - dan
+
+### 1.10.9
+* Updated Fuel recipe map to be similar to recipe map (#1353) - idcppl
+* Updated Furnace recipe map to check all inputs (#1362) - ALongStringOfNumbers
+* Removed Extra Fuel recipe additions (#1388) - ALongStringOfNumbers
+* Fixed incorrect Lapotron Crystal crafting recipe (#1348) - ALongStringOfNumbers
+* Fixed the Primitive Blast Furnace Voiding outputs (#1351) - ALongStringOfNumbers
+* Fixed rare crash on placing cover (#1354) - Eutro
+* Fixed large boiler heatEfficiencyMultiplier not working (#1355) - Artem Melentyev
+* Fixed Forestry like wood not having GTCE recipes (#1369) - detav
+* Fixed Forge data and Capabilities not being synced to client (#1372) - Eutro
+* Fixed surface rocks rendering issue with shaders (#1373) - Hero9909
+* Fixed Multiblocks output voiding (#1384) - Exaxxion
+
 ### 1.10.8
 * Added Sifter to Smart Item FIlter options (#1345) - LAGIdiot
 * Fixed shouldCheckWeakPower not working correctly because of Vanilla MC bug (#1331) - solidDoWant
