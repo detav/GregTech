@@ -142,7 +142,8 @@ public class CommonProxy {
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         // registers coiltypes for the TemperatureProperty used in Blast Furnace Recipes
         for (BlockWireCoil.CoilType values : BlockWireCoil.CoilType.values()) {
-            TemperatureProperty.registerCoilType(values.getCoilTemperature(), values.getMaterial(), values.getName());
+            TemperatureProperty.registerCoilType(values.getCoilTemperature(), values.getMaterial(),
+                    "tile.wire_coil." + values.getName() + ".name");
         }
 
         GTLog.logger.info("Registering ore dictionary...");
